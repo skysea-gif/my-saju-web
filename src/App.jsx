@@ -15,7 +15,7 @@ function App() {
         setErrorMsg('');
         
         try {
-            const apiKey = data.apiKey;
+            const apiKey = data.apiKey?.trim();
             if (!apiKey) {
                 throw new Error("Gemini API 키가 제공되지 않았습니다.");
             }
