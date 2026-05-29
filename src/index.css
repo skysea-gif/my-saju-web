@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #070512;
+  --color-mystic: #1a1433;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F3E5AB;
+  
+  --font-serif: "Hahmlet", serif;
+  --font-sans: "Pretendard", sans-serif;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background-color: var(--color-night);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(26, 20, 51, 0.8), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(45, 30, 80, 0.6), transparent 25%);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.3;
+    z-index: -1;
+    animation: twinkle 10s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.1; transform: scale(1); }
+    100% { opacity: 0.4; transform: scale(1.05); }
+  }
+
+  .glass-card {
+    background: rgba(20, 15, 35, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 20px rgba(212, 175, 55, 0.2);
+  }
+
+  .input-mystic {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    color: #F3E5AB;
+    transition: all 0.3s ease;
+  }
+  .input-mystic:focus {
+    outline: none;
+    border-bottom: 1px solid #D4AF37;
+    box-shadow: 0 10px 10px -10px rgba(212, 175, 55, 0.3);
+  }
+  
+  .btn-glow {
+    background: linear-gradient(45deg, #1a1433, #070512);
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    color: #F3E5AB;
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .spinner-ring {
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes scaleIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(20, 15, 35, 0.4); }
+  ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.6); }
+}
